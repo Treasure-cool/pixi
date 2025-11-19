@@ -111,8 +111,8 @@ export class CanvasApp {
     // 1. 画布缩放（保留原有逻辑）
     canvasView.addEventListener('wheel', (e: WheelEvent) => {
       e.preventDefault();
-      const scale = this.canvasContainer.scale.x + e.deltaY * -0.01;
-      this.canvasContainer.scale.set(Math.max(0.1, Math.min(3, scale)));
+      const scale = this.canvasContainer.scale.x + e.deltaY * -0.0005;
+      this.canvasContainer.scale.set(Math.max(0.01, Math.min(10, scale)));
     });
 
     // 2. 鼠标按下：区分「元素拖拽」和「画布拖拽」（核心新增）
@@ -139,7 +139,7 @@ export class CanvasApp {
         x: number;
         y: number;
         }
-        // 使用时断言
+      // 使用时断言
         this.dragStart.elementX = (clickedElement as PositionedDisplayObject).x;
         this.dragStart.elementY = (clickedElement as PositionedDisplayObject).y;
         canvasView.style.cursor = 'move';
